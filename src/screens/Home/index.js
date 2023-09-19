@@ -40,6 +40,31 @@ export default function App() {
  
   },[])
 
+  document.title = 'topFilmes';
+
+  const [series,setSeries] = useState([])
+
+  useEffect (()=>{
+
+    async function getSeries(){
+
+      try{
+      const response = await fetch("https://api.themoviedb.org/3/discover/tv?api_key=f6340c95d135213c8cfba6b649e91cf2&language=pt-BR")
+      const data = await response.json();
+      console.log(data.results)
+      setSeries(data.results)
+    }
+    catch(error){
+      console.error("DEU RUIM!!!!!!",error)
+    }
+    }
+
+    getSeries();
+ 
+  },[])
+
+
+
   return (
     <View style={style.container}>
       
@@ -74,7 +99,7 @@ export default function App() {
         <FlatList
           horizontal = {true}
           showsHorizontalScrollIndicator = {false}
-          data = {movies}
+          data = {series}
           keyExtractor = {(item) => item.id}
           renderItem = { ({item}) => (
 
