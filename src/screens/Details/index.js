@@ -8,15 +8,17 @@ import { FontAwesome } from '@expo/vector-icons';
 export default function Details(){
 
     const route = useRoute();
-    const data = {titulo:route.params.titulo, nota:parseFloat(route.params.nota), imagem:route.params.imagem}
+    const data = {descricao:route.params.descricao, titulo:route.params.titulo, nota:parseFloat(route.params.nota), imagem:route.params.imagem}
 
     return(
         <View style={style.container}>
-            <Image style={style.img} source={require(`../../img/${data.imagem}`)} />
+            <Image style={style.img} source={{uri:`https://image.tmdb.org/t/p/original/${data.imagem}`}} />
             <Text style={style.title}>{data.titulo}</Text>
+            <Text style={style.descricao}>{data.descricao}</Text>
+           
             <Stars
                 default={data.nota}
-                count={5}
+                count={10}
                 half={true}
                 //starSize={[style.fullStar.size, style.fullStar.size]}
                 disabled={true}

@@ -86,6 +86,7 @@ export default function App() {
             nome = {item.title}
             nota = {item.vote_average}
             imagem = {item.poster_path}
+            descricao = {item.overview}
             
             />
 
@@ -105,9 +106,10 @@ export default function App() {
 
             <Card
             
-              nome = {item.title}
+              nome = {item.original_name}
               nota = {item.vote_average}
               imagem = {item.poster_path}
+              descricao = {item.overview}
             
             />
 
